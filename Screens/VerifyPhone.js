@@ -129,7 +129,7 @@ const VerifyPhone = () => {
         <TouchableOpacity
             onPress={handleSkip}
             className='w-[45%] border border-[#000A4A] rounded-lg px-6 flex justify-center items-center '
-            disabled={!timerIsActive}
+            disabled={timerIsActive}
             style={{ opacity: !timerIsActive ? 1 : 0.5 }}
           >
 

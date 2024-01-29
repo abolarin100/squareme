@@ -55,7 +55,7 @@ const ConfirmPin = () => {
         navigation.navigate("PinSuccess");
     };
 
-    
+
 
     const handleInputChange = (text, index) => {
         if (text.length === 1) {
@@ -72,21 +72,7 @@ const ConfirmPin = () => {
         }
     };
 
-    const handleBackspace = () => {
-        const newPins = [...pins];
-        const lastFilledIndex = newPins.lastIndexOf('');
-
-        if (lastFilledIndex !== -1) {
-            newPins[lastFilledIndex - 1] = '';
-            setPins(newPins);
-            inputRefs.current[lastFilledIndex - 1].current.focus();
-        }
-    };
-
-    const handleResend = () => {
-        setResend(true);
-        setTimerIsActive(true);
-    };
+    
 
     const renderDigitButton = (digit) => (
         <TouchableOpacity key={digit} onPress={() => handleInputChange(digit, pins.indexOf(''))}>
@@ -134,32 +120,32 @@ const ConfirmPin = () => {
                 </View>
 
                 <View className='flex-col gap-16 w-[75%] justify-center relative bottom-28  '>
-                <View className='flex-row justify-between'>
-                {[1, 2, 3].map(digit => renderDigitButton(digit))}
-
-                        </View>
-                        <View className='flex-row justify-between'>
-                        {[4, 5, 6].map(digit => renderDigitButton(digit))}
-
-                        </View>
-                        <View className='flex-row justify-between'>
-                        {[7, 8, 9].map(digit => renderDigitButton(digit))}
-
-                        </View>
-                        <View className='flex-row justify-between items-center'>
-                            <TouchableOpacity onPress={() => handleInputChange('0', pins.indexOf(''))} className='items-center'>
-                                <Text  className='text-xl text-[#BDBDBD]'>ͦͦ</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity>
-                                <Text  className='text-xl text-[#000A4A]'>0</Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity onPress={handleNext}>
-                                <Ionicons name="chevron-back" size={15} color="#BDBDBD"   />
-                            </TouchableOpacity>
-
-                        </View>
+                    <View className='flex-row justify-between'>
+                        {[1, 2, 3].map(digit => renderDigitButton(digit))}
 
                     </View>
+                    <View className='flex-row justify-between'>
+                        {[4, 5, 6].map(digit => renderDigitButton(digit))}
+
+                    </View>
+                    <View className='flex-row justify-between'>
+                        {[7, 8, 9].map(digit => renderDigitButton(digit))}
+
+                    </View>
+                    <View className='flex-row justify-between items-center'>
+                        <TouchableOpacity onPress={() => handleInputChange('0', pins.indexOf(''))} className='items-center'>
+                            <Text className='text-xl text-[#BDBDBD]'>ͦͦ</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <Text className='text-xl text-[#000A4A]'>0</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={handleNext}>
+                            <Ionicons name="chevron-back" size={15} color="#BDBDBD" />
+                        </TouchableOpacity>
+
+                    </View>
+
+                </View>
 
 
             </SafeAreaView>

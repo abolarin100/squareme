@@ -15,13 +15,13 @@ import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from "@react-navigation/native";
 import { useFonts } from 'expo-font';
 
-const PinSuccess = () => {
+const Profile = () => {
     const navigation = useNavigation();
 
 
 
     const handleNext = () => {
-        navigation.navigate("Dashboard");
+        navigation.navigate("SetPin");
     };
 
 
@@ -30,15 +30,10 @@ const PinSuccess = () => {
             <SafeAreaView className='flex-1'>
                 <View className=" flex-1 flex-col justify-start  gap-1  w-[100%]  ">
 
-                    <View className=' justify-center items-center w-[100%] '>
-                        <Image
-                            source={require("../assets/images/success.png")}
-                            className=" object-contain w-[38%] h-[40%] items-center justify-center"
-                        />
-                    </View>
+                    
                     <View className=' flex-col  items-center  '>
-                        <Text className='text-xl font-bold text-center w-[80%] text-black'>Pin Set Successful</Text>
-                        <Text className='text-sm text-center w-[100%] text-[#4D4D4D] mt-6 '>Your security pin has been set  successfully.</Text>
+                        <Text className='text-xl font-bold text-center w-[80%] text-black'>Profile</Text>
+                        <Text className='text-sm text-center w-[100%] text-[#4D4D4D] mt-6 '>Your Profile has been set  successfully.</Text>
                     </View>
                     
 
@@ -59,4 +54,4 @@ const PinSuccess = () => {
     );
 };
 
-export default PinSuccess;
+export default Profile;

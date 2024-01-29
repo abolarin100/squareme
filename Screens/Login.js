@@ -29,6 +29,9 @@ const Login = () => {
     const handleNext = () => {
         navigation.navigate("SignUp");
     };
+    const handleSkip = () => {
+        navigation.navigate("Dashboard");
+    };
 
    
 
@@ -57,7 +60,7 @@ const Login = () => {
                         <TouchableOpacity className='bg-white justify-center  py-3 rounded-md' onPress={handleNext}>
                             <Text className='text-[#000A4A] text-base text-center '>Create an account</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity className='border border-white justify-center  py-3 rounded-md' >
+                        <TouchableOpacity className='border border-white justify-center  py-3 rounded-md' onPress={handleSkip} >
                             <Text className='text-white text-base text-center '>I have an account</Text>
                         </TouchableOpacity>
 

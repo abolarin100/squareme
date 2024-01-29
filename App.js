@@ -6,7 +6,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from '@react-navigation/stack';
 import { Text, View, TouchableOpacity } from 'react-native';
 import Onboarding from './Screens/Onboarding';
-
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Onboarding3 from './Screens/Onboarding3';
 import Onboarding1 from './Screens/Onboarding1';
 import Login from './Screens/Login';
@@ -16,11 +16,67 @@ import PhoneSuccess from './Screens/PhoneSuccess';
 import SetPin from './Screens/SetPIn';
 import ConfirmPin from './Screens/ConfirmPin';
 import PinSuccess from './Screens/PinSuccess';
+import Keypad from './Screens/Keypad';
+import Home from './Screens/Home';
+import Profile from './Screens/Profile';
+import { useNavigation } from "@react-navigation/native";
 
 
 const Stack = createStackNavigator()
+const Tab = createBottomTabNavigator();
 
 export default function App() {
+
+
+  const DashboardTab = () => {
+    const navigation = useNavigation();
+    const renderTabBarIcon = (name, size, color) => ({ focused }) => (
+      <Ionicons name={name} size={size} color={focused ? "#FFFFFF" : color} />
+    );
+    return (
+      <Tab.Navigator
+        
+      >
+        <Tab.Screen
+          name="Home"
+          component={Home}
+          options={{
+            headerShown: false,
+            tabBarIcon: () => (
+              <Ionicons name="home" size={22} color={"#28283A"} />
+            ),
+            tabBarShowLabel: false,
+              tabBarActiveTintColor: "#28283A",
+              
+          }}
+        />
+        <Tab.Screen
+          name="Keypad"
+          component={Keypad}
+          options={{
+            headerShown: false,
+            tabBarIcon: renderTabBarIcon("grid", 22, "#BDBDBD"),
+            tabBarShowLabel: false,
+            tabBarActiveTintColor: "#FFFFFF",
+            tabBarInActiveTintColor: "#BDBDBD",
+            tabBarStyle: { backgroundColor: "#000A4A" },
+          }}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={Profile}
+          options={{
+            headerShown: false,
+            tabBarIcon: () => (
+              <Ionicons name="person" size={22} color={"#BDBDBD"} />
+            ),
+            tabBarShowLabel: false
+          }}
+        />
+         </Tab.Navigator>
+  );
+};
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -92,6 +148,8 @@ export default function App() {
         })}/>
 
 <Stack.Screen name='PinSuccess' component={PinSuccess}  options={{ headerShown: false }} />
+<Stack.Screen name='Dashboard' component={DashboardTab}  options={{ headerShown: false }} />
+
         
        
       </Stack.Navigator>
